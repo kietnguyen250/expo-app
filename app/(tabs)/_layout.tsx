@@ -4,9 +4,11 @@ import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { useLocales } from "@/hooks/useLocales";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { tr } = useLocales();
 
   return (
     <Tabs
@@ -18,7 +20,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          title: tr("home.title"),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}
@@ -30,7 +32,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Settings",
+          title: tr("settings.title"),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "settings" : "settings-outline"}
@@ -42,7 +44,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: tr("profile.title"),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "person" : "person-outline"}

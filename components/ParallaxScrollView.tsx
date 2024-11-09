@@ -1,11 +1,5 @@
 import { useState, type PropsWithChildren, type ReactElement } from "react";
-import {
-  Appearance,
-  Platform,
-  Pressable,
-  StyleSheet,
-  useColorScheme,
-} from "react-native";
+import { Platform, StyleSheet, useColorScheme } from "react-native";
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -14,8 +8,9 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { ThemedView } from "@/components/ThemedView";
-import { ThemedText } from "./ThemedText";
+import { useSettingsStore } from "@/stores/settings.store";
 import { ThemedButton } from "./ThemedButton";
+import { ThemedText } from "./ThemedText";
 
 const HEADER_HEIGHT = 250;
 
@@ -32,7 +27,8 @@ export default function ParallaxScrollView({
   const colorScheme = useColorScheme() ?? "light";
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
-  const [theme, setTheme] = useState(colorScheme);
+  const [appTheme, setAppTheme] = useState(colorScheme);
+  const { theme, setTheme } = useSettingsStore();
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -57,9 +53,9 @@ export default function ParallaxScrollView({
 
   const onChangeTheme = () => {
     if (Platform.OS !== "web") {
-      const newTheme = theme === "light" ? "dark" : "light";
-      Appearance.setColorScheme(newTheme);
+      const newTheme = appTheme === "light" ? "dark" : "light";
       setTheme(newTheme);
+      setAppTheme(newTheme);
     }
   };
 
