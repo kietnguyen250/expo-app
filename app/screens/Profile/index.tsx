@@ -1,6 +1,7 @@
 import { ThemedButton } from "@/components/ThemedButton";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { MainLocaleKeys } from "@/constants/enum";
 import { useLocales } from "@/hooks/useLocales";
 import { useUserStore } from "@/stores/user.store";
 import React from "react";
@@ -9,7 +10,7 @@ import { StyleSheet } from "react-native";
 const ProfileScreen = () => {
   const { user, setUser, clearUser } = useUserStore();
 
-  const { tr } = useLocales();
+  const { tr } = useLocales("profile");
 
   const onDispatch = () => {
     if (user) {
@@ -26,7 +27,7 @@ const ProfileScreen = () => {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText>{tr("profile.title")}</ThemedText>
+      <ThemedText>{tr("title")}</ThemedText>
 
       <ThemedText>{user?.id}</ThemedText>
       <ThemedText>{user?.email}</ThemedText>

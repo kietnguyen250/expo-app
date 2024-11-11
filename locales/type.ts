@@ -1,27 +1,15 @@
-// import en from "./en";
-
 import en from "./en";
 
-// // Automatically infer the structure of the `en` keys
-type DefaultNamespace = typeof en;
+type TranslationKeys = typeof en;
 
-// Use `DefaultNamespace` to define nested keys
-// type TranslationKeys<T> = T extends object
-//   ? {
-//       [K in keyof T]: K extends string
-//         ? `${K}` | `${K}.${TranslationKeys<T[K]>}`
-//         : never;
-//     }[keyof T]
-//   : "";
+export type MainLocaleKeys = keyof TranslationKeys;
 
-// export type LocaleKeys = TranslationKeys<DefaultNamespace>;
+type LocaleChildKeys<T extends MainLocaleKeys | undefined> =
+  T extends MainLocaleKeys
+    ? keyof TranslationKeys[T]
+    : keyof {
+        [P in keyof TranslationKeys]: `${P}.${keyof TranslationKeys[P]}`;
+      };
 
-type NestedKeys<T> = {
-  [K in keyof T]: K extends string
-    ? T[K] extends object
-      ? `${K}` | `${K}.${NestedKeys<T[K]>}`
-      : `${K}`
-    : never;
-}[keyof T];
-
-export type LocaleKeys = NestedKeys<DefaultNamespace>;
+export type LocaleKeys<T extends MainLocaleKeys | undefined> =
+  T extends MainLocaleKeys ? LocaleChildKeys<T> : `${MainLocaleKeys}.${string}`;

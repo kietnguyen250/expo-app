@@ -6,8 +6,13 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedButton } from "@/components/ThemedButton";
 import { Link } from "expo-router";
+import { useLocales } from "@/hooks/useLocales";
 
 export default function HomeScreen() {
+  const { tr: homeTr } = useLocales("home");
+  const { tr: welcomeTr } = useLocales("welcome");
+  const homeTitle = homeTr("title");
+  const welcomeTitle = welcomeTr("title");
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -19,30 +24,12 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">{welcomeTitle}</ThemedText>
         <HelloWave />
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: "cmd + d", android: "cmd + m" })}
-          </ThemedText>{" "}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Settings</ThemedText>
-        <ThemedText>
-          Tap the Settings tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle">{homeTitle}</ThemedText>
         <ThemedText>
           When you're ready, run{" "}
           <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}

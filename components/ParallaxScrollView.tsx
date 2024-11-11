@@ -28,7 +28,7 @@ export default function ParallaxScrollView({
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
   const [appTheme, setAppTheme] = useState(colorScheme);
-  const { theme, setTheme } = useSettingsStore();
+  const { setTheme } = useSettingsStore();
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
