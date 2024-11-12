@@ -1,0 +1,70 @@
+{
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ENV": "DEVELOP",
+        "EXPO_PUBLIC_VERSON_NAME": "EXPO_PUBLIC_VERSON_NAME",
+        "EXPO_PUBLIC_VERSION_CODE_ANDROID": "EXPO_PUBLIC_VERSION_CODE_ANDROID",
+        "EXPO_PUBLIC_BUILD_NUMBER_IOS": "EXPO_PUBLIC_BUILD_NUMBER_IOS",
+        "EXPO_PUBLIC_API_URL": "EXPO_PUBLIC_API_URL",
+        "EXPO_PUBLIC_API_KEY": "EXPO_PUBLIC_API_KEY"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ENV": "STAGING",
+        "EXPO_PUBLIC_VERSON_NAME": "EXPO_PUBLIC_VERSON_NAME",
+        "EXPO_PUBLIC_VERSION_CODE_ANDROID": "EXPO_PUBLIC_VERSION_CODE_ANDROID",
+        "EXPO_PUBLIC_BUILD_NUMBER_IOS": "EXPO_PUBLIC_BUILD_NUMBER_IOS",
+        "EXPO_PUBLIC_API_URL": "EXPO_PUBLIC_API_URL",
+        "EXPO_PUBLIC_API_KEY": "EXPO_PUBLIC_API_KEY"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_ENV": "PRODUCTION",
+        "EXPO_PUBLIC_VERSON_NAME": "EXPO_PUBLIC_VERSON_NAME",
+        "EXPO_PUBLIC_VERSION_CODE_ANDROID": "EXPO_PUBLIC_VERSION_CODE_ANDROID",
+        "EXPO_PUBLIC_BUILD_NUMBER_IOS": "EXPO_PUBLIC_BUILD_NUMBER_IOS",
+        "EXPO_PUBLIC_API_URL": "EXPO_PUBLIC_API_URL",
+        "EXPO_PUBLIC_API_KEY": "EXPO_PUBLIC_API_KEY"
+      }
+    }
+  },
+  "submit": {
+    "Dev": {
+      "android": {
+        "serviceAccountKeyPath": "./assets/jsons/snack-pet-8d4617321c39.json",
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "john@turtle.com",
+        "ascAppId": "1234567890",
+        "appleTeamId": "AB12XYZ34S",
+        "bundleIdentifier": "com.example.app",
+        "companyName": "Example Inc."
+      }
+    },
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "./assets/jsons/snack-pet-8d4617321c39.json",
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "john@turtle.com",
+        "ascAppId": "1234567890",
+        "appleTeamId": "AB12XYZ34S",
+        "bundleIdentifier": "com.example.app",
+        "companyName": "Example Inc."
+      }
+    }
+  }
+}

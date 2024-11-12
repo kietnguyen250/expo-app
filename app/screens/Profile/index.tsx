@@ -1,14 +1,14 @@
-import { ThemedButton } from "@/components/ThemedButton";
-import { ThemedText } from "@/components/ThemedText";
+import Button from "@/components/Button";
 import { ThemedView } from "@/components/ThemedView";
-import { MainLocaleKeys } from "@/constants/enum";
 import { useLocales } from "@/hooks/useLocales";
 import { useUserStore } from "@/stores/user.store";
 import React from "react";
 import { StyleSheet } from "react-native";
+import Animated, { useSharedValue } from "react-native-reanimated";
 
 const ProfileScreen = () => {
   const { user, setUser, clearUser } = useUserStore();
+  const width = useSharedValue(100);
 
   const { tr } = useLocales("profile");
 
@@ -25,28 +25,21 @@ const ProfileScreen = () => {
     setUser(newUser);
   };
 
+  const handlePress = () => {
+    width.value = width.value + 50;
+    onDispatch();
+  };
+
   return (
     <ThemedView style={styles.container}>
-      <ThemedText>{tr("title")}</ThemedText>
-
-      <ThemedText>{user?.id}</ThemedText>
-      <ThemedText>{user?.email}</ThemedText>
-      <ThemedText>{user?.name}</ThemedText>
-
-      <ThemedButton
-        onPress={onDispatch}
-        style={styles.button}
-        lightColor="black"
-        darkColor="white"
-      >
-        <ThemedText
-          style={styles.txtButton}
-          lightColor="white"
-          darkColor="black"
-        >
-          Dispatch
-        </ThemedText>
-      </ThemedButton>
+      <Animated.View
+        style={{
+          width,
+          height: 100,
+          backgroundColor: "violet",
+        }}
+      />
+      <Button onPress={handlePress} title="Click me" />
     </ThemedView>
   );
 };

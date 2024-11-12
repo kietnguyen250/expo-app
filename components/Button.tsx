@@ -3,7 +3,7 @@ import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { ThemedButton } from "./ThemedButton";
 import { ThemedText } from "./ThemedText";
 
-interface CustomButtonProps {
+interface ButtonProps {
   title: string;
   onPress: () => void;
   style?: ViewStyle;
@@ -11,7 +11,7 @@ interface CustomButtonProps {
   disabled?: boolean;
 }
 
-const CustomButton: FC<CustomButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   title,
   onPress,
   style,
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomButton;
+export default Button;
