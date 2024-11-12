@@ -1,10 +1,11 @@
+import { Language } from "@/constants/enum";
 import i18n from "@/locales/i18n";
 import { LocaleKeys, MainLocaleKeys } from "@/locales/type";
 import { useSettingsStore } from "@/stores/settings.store";
 import { useTranslation } from "react-i18next";
 
 export const useLocales = <T extends MainLocaleKeys | undefined>(
-  mainKey: T
+  mainKey?: T
 ) => {
   const { setLanguage } = useSettingsStore();
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export const useLocales = <T extends MainLocaleKeys | undefined>(
     let finalKey = mainKey ? `${mainKey}.${key}` : key;
     return t(finalKey);
   };
-  const changeLanguage = (language: "en" | "vi") => {
+  const changeLanguage = (language: Language.EN | Language.VI) => {
     i18n.changeLanguage(language);
     setLanguage(language);
   };

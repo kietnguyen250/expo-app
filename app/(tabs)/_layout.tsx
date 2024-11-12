@@ -8,7 +8,9 @@ import { useLocales } from "@/hooks/useLocales";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const { tr } = useLocales();
+  const { tr: homeTr } = useLocales("home");
+  const { tr: settingsTr } = useLocales("settings");
+  const { tr: profileTr } = useLocales("profile");
 
   return (
     <Tabs
@@ -20,7 +22,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: tr("home.title"),
+          title: homeTr("title"),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}
@@ -32,7 +34,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: tr("settings.title"),
+          title: settingsTr("title"),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "settings" : "settings-outline"}
@@ -44,7 +46,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: tr("profile.title"),
+          title: profileTr("title"),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "person" : "person-outline"}

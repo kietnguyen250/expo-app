@@ -7,3 +7,8 @@ export enum MainLocaleKeys {
   PROFILE = "profile",
   SETTINGS = "settings",
 }
+
+export enum Language {
+  EN = "en",
+  VI = "vi",
+}

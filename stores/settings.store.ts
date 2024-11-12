@@ -1,17 +1,18 @@
 import { Appearance } from "react-native";
 import { createStore } from "./config.store";
+import { Language } from "@/constants/enum";
 
 type SettingsState = {
   theme: "light" | "dark";
-  language: "en" | "vi";
+  language: Language.EN | Language.VI;
   setTheme: (theme: "light" | "dark") => void;
-  setLanguage: (language: "en" | "vi") => void;
+  setLanguage: (language: Language.EN | Language.VI) => void;
 };
 
 export const useSettingsStore = createStore<SettingsState>(
   (set) => ({
     theme: "light",
-    language: "en",
+    language: Language.EN,
     setTheme: (theme) => {
       Appearance.setColorScheme(theme);
       set({ theme });
